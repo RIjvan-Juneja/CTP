@@ -1,0 +1,17 @@
+.steps-application{
+    font-size: 17px;
+    padding: 0.7rem 6.079rem;
+}
+.application-body{
+    border: 1px solid #eaeaea;
+    margin: 17px;
+}
+.form-btn{
+    font-size: 0.975rem;
+    padding: 0.375rem 1.55rem;
+    margin: 5px 7px;
+}
+
+.application-heading{
+    font-size: 21px;
+}
