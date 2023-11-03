@@ -14,6 +14,9 @@
             <li><a href="rejected_stu.php" aria-expanded="false"><i class="icon icon-app-store"></i><span
                         class=" nav-text">Rejected Students</span></a></li>
             </li>
+            <li><a href="trans_stu_data.php" aria-expanded="false"><i class="icon icon-app-store"></i><span
+                        class=" nav-text">Transfered Student Data</span></a></li>
+            </li>
         </ul>
     </div>
 
