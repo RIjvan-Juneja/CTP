@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['enrollment_number'])) {
+    $enrollment_number = $_SESSION['enrollment_number'];
+}else{
+    header("Location: application.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
