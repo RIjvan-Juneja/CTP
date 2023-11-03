@@ -1,26 +1,45 @@
-<?php
-include '../Database/connect.php';
-session_start();
-if (isset($_SESSION['enrollment_number'])) {
-    $enrollment_number = $_SESSION['enrollment_number'];
-} else {
-    header("Location: login.php");
-    // exit();
-    // echo "Enrollment";
-}
-if (isset($_POST["b-submit"])) {
+<!DOCTYPE html>
+<html lang="en">
 
-    $u_first_name = mysqli_real_escape_string($con, $_POST['first_name']);
-    $u_middle_name = mysqli_real_escape_string($con, $_POST['middle_name']);
-    $u_last_name = mysqli_real_escape_string($con, $_POST['last_name']);
-    $u_mobile_number = mysqli_real_escape_string($con, $_POST['mobile_number']);
-    $u_enrollment_number = mysqli_real_escape_string($con, $_POST['enrollment_number']);
-    $u_email = mysqli_real_escape_string($con, $_POST['email']);
-    $u_gender = mysqli_real_escape_string($con, $_POST['gender']);
-    $u_cast = mysqli_real_escape_string($con, $_POST['cast']);
-    $u_dob = mysqli_real_escape_string($con, $_POST['dob']);
-    $u_stmt = $con->prepare("UPDATE `tbl_stu_application` SET first_name = ?,middle_name = ?,last_name = ?,email= ?,mobile_number= ?,dob=?,gender= ?,cast = ? WHERE enrollment = ? ");
-    $u_stmt->bind_param("sssssiss", $u_first_name, $u_middle_name, $u_last_name, $u_email, $u_mobile_number, $u_dob, $u_gender, $u_cast,$enrollment_number);
+<head>
+    <?php include '../college/include/importhead.php';?>
+    <?php
+    include '../Database/connect.php';
+        if (isset($_POST["b-submit"])) 
+    {
+    
+            $first_name = mysqli_real_escape_string($con, $_POST['first_name']);
+            $middle_name = mysqli_real_escape_string($con, $_POST['middle_name']);
+            $last_name = mysqli_real_escape_string($con, $_POST['last_name']);
+            $mobile_number = mysqli_real_escape_string($con, $_POST['mobile_number']);
+            $enrollment_number = mysqli_real_escape_string($con, $_POST['enrollment_number']);
+            $email = mysqli_real_escape_string($con, $_POST['email']);
+            $gender = mysqli_real_escape_string($con, $_POST['gender']);
+            $cast = mysqli_real_escape_string($con, $_POST['cast']);
+            $dob = mysqli_real_escape_string($con, $_POST['dob']);
+            $stmt = $con->prepare("UPDATE `tbl_stu_application` SET first_name = ?,middle_name = ?,last_name = ?,email_id= ?,mobile_number= ?,dob=?,gender= ?,cast = ? WHERE enrollment_number = ? ");
+        $stmt->bind_param("sssssis", $u_first_name, $u_middle_name, $u_last_name, $u_email_id, $u_mobile_number, $u_dob, $u_gender, $u_cast);
+        $result = $stmt->execute();
+        if ($result) {
+            echo "<script>alert('insertd')</script>";
+        } else {
+            echo "<script>alert('not insertd')</script>";
+        }
+    }
+    if (isset($_POST["a-submit"])) {
+    
+        $current_clg_id = mysqli_real_escape_string($con, $_POST['current_clg_id']);
+        $transferred_clg_id = mysqli_real_escape_string($con, $_POST['transferred_clg_id']);
+        $course = mysqli_real_escape_string($con, $_POST['course']);
+        $branch = mysqli_real_escape_string($con, $_POST['branch']);
+        $current_sem = mysqli_real_escape_string($con, $_POST['current_sem']);
+        $previous_sem_spi= mysqli_real_escape_string($con, $_POST['previous_sem_spi']);
+        $cpi_till_now = mysqli_real_escape_string($con, $_POST['cpi_till_now']);
+        $current_backlog= mysqli_real_escape_string($con, $_POST['current_backlog']);
+        $stu_has_ufm = mysqli_real_escape_string($con, $_POST['stu_has_ufm']);
+        $stu_detained= mysqli_real_escape_string($con, $_POST['stu_detained']);
+        $stmt = $con->prepare("UPDATE `tbl_stu_application` SET current_clg_id = ?,transferred_clg_id = ?,course = ?,branch= ?,current_sem= ?,previous_sem_spi=?,cpi_till_now= ?,current_backlog = ?,stu_has_ufm = ?,stu_detained = ? WHERE enrollment = ? ");
+    $stmt->bind_param("sssssis", $u_current_clg_id, $u_transferred_clg_id, $u_course, $u_branch, $u_current_sem, $u_previous_sem_spi, $u_previous_sem_spi, $u_cpi_till_now, $u_current_backlog, $u_stu_has_ufm, $u_stu_detained);
     $result = $stmt->execute();
     if ($result) {
         echo "<script>alert('insertd')</script>";
@@ -28,14 +47,8 @@ if (isset($_POST["b-submit"])) {
         echo "<script>alert('not insertd')</script>";
     }
 }
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php include '../college/include/importhead.php'; ?>
+    ?>
+    
     <link rel="stylesheet" href="../assets/student_assets/application.css">
 
     <title>Document</title>
@@ -69,96 +82,91 @@ if (isset($_POST["b-submit"])) {
                 <div class="tab-content">
                     <!-- BASIC DETAIL SECTION START -->
                     <div class="tab-pane fade active show" id="basic" role="tabpanel">
-                        <form action="application.php" method="POST">
-                            <div class="pt-4">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">First Name*</label>
-                                            <input type="text" name="first_name" class="form-control error"
-                                                placeholder="Your Name" required="">
-                                            <label id="firstName-error" class="error" for="firstName">validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Middle Name*</label>
-                                            <input type="text" name="middle_name" class="form-control error"
-                                                placeholder="Father Name" required=""><label id="MiddleName-error"
-                                                class="error" for="MiddleName">validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Last Name*</label>
-                                            <input type="text" name="last_name" class="form-control error"
-                                                placeholder="Surename" required=""><label id="lastName-error"
-                                                class="error" for="lastName">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Enrollment Number*</label>
-                                            <input type="number" name="enrollment_number" class="form-control error"
-                                                placeholder="" required=""><label id="enr_num-error" class="error"
-                                                for="enr_num">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Mobile Number*</label>
-                                            <input type="number" name="mobile_number" class="form-control error"
-                                                placeholder="" required=""><label id="mobile_num-error" class="error"
-                                                for="mobile_num">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Email*</label>
-                                            <input type="email" name="email" class="form-control error" placeholder=""
-                                                required=""><label id="email_num-error" class="error"
-                                                for="email_num">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Date Of Birth*</label>
-                                            <input type="date" name="dob" class="form-control error" placeholder=""
-                                                required=""><label id="dob-error" class="error"
-                                                for="dob">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Gender*</label>
-                                            <select class="form-control" name="gender">
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                                <option>Other</option>
-                                            </select><label id="gender-error" class="error"
-                                                for="gender">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Cast*</label>
-                                            <select class="form-control" name="cast">
-                                                <option>OBC</option>
-                                                <option>OPEN</option>
-                                                <option>ST/SC</option>
-                                            </select><label id="cast-error" class="error" for="cast">Validation</label>
-                                        </div>
+                        <div class="pt-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">First Name*</label>
+                                        <input type="text" name="firstName" class="form-control error"
+                                            placeholder="Your Name" required="">
+                                        <label id="firstName-error" class="error" for="firstName">validation</label>
                                     </div>
                                 </div>
-                                <div class="row justify-content-end">
-                                    <!-- <a class="btn btn-light form-btn" target="_blank" href="#">Previous</a>
-                                    <a class="btn btn-primary form-btn" target="_blank" data-toggle="tab"
-                                        id="firstAnchor">Save & Next</a> -->
-                                    <button type="submit" class="btn btn-primary" name="b-submit">Submit</button>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Middle Name*</label>
+                                        <input type="text" name="MiddleName" class="form-control error"
+                                            placeholder="Father Name" required=""><label id="MiddleName-error"
+                                            class="error" for="MiddleName">validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Last Name*</label>
+                                        <input type="text" name="lastName" class="form-control error"
+                                            placeholder="Surename" required=""><label id="lastName-error" class="error"
+                                            for="lastName">Validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Enrollment Number*</label>
+                                        <input type="number" name="enr_num" class="form-control error" placeholder=""
+                                            required=""><label id="enr_num-error" class="error"
+                                            for="enr_num">Validation</label>
+                                    </div>
+                                </div>
 
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Mobile Number*</label>
+                                        <input type="number" name="mobile_num" class="form-control error" placeholder=""
+                                            required=""><label id="mobile_num-error" class="error"
+                                            for="mobile_num">Validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Email*</label>
+                                        <input type="email" name="email_num" class="form-control error" placeholder=""
+                                            required=""><label id="email_num-error" class="error"
+                                            for="email_num">Validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Date Of Birth*</label>
+                                        <input type="date" name="dob" class="form-control error" placeholder=""
+                                            required=""><label id="dob-error" class="error" for="dob">Validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Gender*</label>
+                                        <select class="form-control">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Other</option>
+                                        </select><label id="gender-error" class="error" for="gender">Validation</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="text-label">Cast*</label>
+                                        <select class="form-control">
+                                            <option>OBC</option>
+                                            <option>OPEN</option>
+                                            <option>ST/SC</option>
+                                        </select><label id="cast-error" class="error" for="cast">Validation</label>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
+                            <div class="row justify-content-end">
+                                <a class="btn btn-light form-btn" target="_blank" href="#">Previous</a>
+                                <a class="btn btn-primary form-btn" target="_blank" data-toggle="tab"
+                                    id="firstAnchor">Save & Next</a>
+                            </div>
+                        </div>
                     </div>
                     <!-- BASIC DETAIL SECTION END  -->
 
@@ -218,8 +226,8 @@ if (isset($_POST["b-submit"])) {
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="text-label">Previous Semester*</label>
-                                            <select class="form-control" name="previous_sem">
+                                            <label class="text-label">Current Semester*</label>
+                                            <select class="form-control" name="current_sem">
                                                 <option value="1">3</option>
                                                 <option value="1">5</option>
                                                 <option value="1">7</option>
@@ -308,7 +316,7 @@ if (isset($_POST["b-submit"])) {
             </div>
         </div>
     </div>
-    <!-- <script>
+    <script>
         // Get references to the anchor tags
         var firstAnchor = document.getElementById("firstAnchor");
         var secondAnchor = document.getElementById("secondAnchor");
@@ -338,7 +346,7 @@ if (isset($_POST["b-submit"])) {
         // Add a click event listener to the second anchor tag
         secondAnchor.addEventListener("click", handleClickOnSecondAnchor);
 
-    </script> -->
+    </script>
     <?php include '../college/include/importjs.php'; ?>
 
 </body>
