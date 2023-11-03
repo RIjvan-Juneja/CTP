@@ -41,22 +41,22 @@
                                 <label class="form-check-label" for="exampleCheck1">Accept rules & regulation</label>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">login</button>
+                            <button type="submit" class="btn btn-primary">Apply</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="login-form" role="tabpanel" aria-labelledby="login-form-tab"
                         tabindex="0">
-                        <form>
+                        <form action="api/slogin.php" method="POST">
                             <div class="form-group py-2">
                                 <label for="exampleInputEmail1" class="pb-2">Enrollment Number</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" name="enrollment_num">
                             </div>
                             <div class="form-group py-2">
                                 <label for="exampleInputPassword1" class="pb-2">Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" name="password">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>
