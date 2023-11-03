@@ -131,8 +131,8 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Current College*</label>
-                                            <select class="form-control">
-                                                <option value="1">GYANMANJARI INVOTIVE UNIVERCITY</option>
+                                            <select class="form-control" name="current_clg_id">
+                                                <option value="1">GYANMANJARI INVOTIVE UNIVERSITY</option>
                                                 <option value="1">GTU</option>
                                                 <option value="1">SSIP</option>
                                             </select>
@@ -144,8 +144,8 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Want Transfred College*</label>
-                                            <select class="form-control">
-                                                <option value="1">GYANMANJARI INVOTIVE UNIVERCITY</option>
+                                            <select class="form-control" name="transferred_clg_id">
+                                                <option value="1">GYANMANJARI INVOTIVE UNIVERSITY</option>
                                                 <option value="1">GTU</option>
                                                 <option value="1">SSIP</option>
                                             </select>
@@ -157,7 +157,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Course*</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="course">
                                                 <option value="B.E">B.E</option>
                                                 <option value="Diploma">Diploma</option>
                                             </select>
@@ -169,7 +169,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Branch*</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="branch">
                                                 <option value="IT">IT</option>
                                                 <option value="Diploma">Diploma</option>
                                             </select>
@@ -180,8 +180,8 @@
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="text-label">Current Semester*</label>
-                                            <select class="form-control">
+                                            <label class="text-label">Previous Semester*</label>
+                                            <select class="form-control" name="previous_sem">
                                                 <option value="1">3</option>
                                                 <option value="1">5</option>
                                                 <option value="1">7</option>
@@ -194,7 +194,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Previous SEM SPI*</label>
-                                            <input type="number" name="email_num" class="form-control error"
+                                            <input type="number" name="previous_sem_spi" class="form-control error"
                                                 placeholder="" required=""><label id="email_num-error" class="error"
                                                 for="email_num">Validation</label>
                                         </div>
@@ -202,15 +202,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Previous SEM CPI*</label>
-                                            <input type="number" name="email_num" class="form-control error"
-                                                placeholder="" required=""><label id="email_num-error" class="error"
-                                                for="email_num">Validation</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="text-label">Previous SEM SPI*</label>
-                                            <input type="number" name="email_num" class="form-control error"
+                                            <input type="number" name="cpi_till_now" class="form-control error"
                                                 placeholder="" required=""><label id="email_num-error" class="error"
                                                 for="email_num">Validation</label>
                                         </div>
@@ -218,7 +210,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Current Backlog*</label>
-                                            <input type="number" name="email_num" class="form-control error"
+                                            <input type="number" name="current_backlog" class="form-control error"
                                                 placeholder="" required=""><label id="email_num-error" class="error"
                                                 for="email_num">Validation</label>
                                         </div>
@@ -227,7 +219,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Student has UFM*</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="stu_has_ufm">
                                                 <option value="1">Yes</option>
                                                 <option value="0">NO</option>
                                             </select>
@@ -239,7 +231,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Student has Detained*</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="stu_detained">
                                                 <option value="1">Yes</option>
                                                 <option value="0">NO</option>
                                             </select>
