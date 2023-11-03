@@ -197,10 +197,10 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $("#regForm").submit(function(event) {
+        $(document).ready(function () {
+            $("#regForm").submit(function (event) {
                 event.preventDefault(); // Prevent the default form submission
-// alert("Hello!");
+                // alert("Hello!");
                 // Get form input values
                 const enrollment = $("#er_num").val();
                 // alert(enrollment)
@@ -217,13 +217,13 @@
                     url: "api/registration.php",
                     data: JSON.stringify(jsonData),
                     contentType: "application/json",
-                    success: function(response) {
+                    success: function (response) {
                         // Handle the response from the PHP file
                         const parsedData = JSON.parse(response);
 
-// Access the "message" property and display it
-const message = parsedData.message;
-alert(message)
+                        // Access the "message" property and display it
+                        const message = parsedData.message;
+                        alert(message)
                     }
                 });
             });
