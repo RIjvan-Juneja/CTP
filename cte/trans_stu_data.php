@@ -40,7 +40,7 @@
         <div class="content-body">
             <div class="container-fluid">
 
-                <div class="col-lg-12">
+                <!-- <div class="col-lg-12"> -->
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Transfered Student Data</h4>
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
 
             </div>
         </div>
