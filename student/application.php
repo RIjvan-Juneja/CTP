@@ -198,7 +198,18 @@ if (isset($_POST["b-submit"])) {
                                                 for="current-college">validation</label>
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="text-label">College Transfer Reason*</label>
+                                            <select class="form-control" name="transferred_clg_id">
+                                                <option value="Medical">Medical Reason</option>
+                                                <option value="1">Parent's Demise</option>
+                                                <!-- <option value="1">SSIP</option> -->
+                                            </select>
+                                            <label id="current-college-error" class="error"
+                                                for="current-college">validation</label>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Course*</label>
