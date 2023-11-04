@@ -1,3 +1,10 @@
+<?php
+
+include "../Database/connect.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,51 +40,64 @@
         <div class="content-body">
             <div class="container-fluid">
                 <!-- <div class=""> -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Primary Table</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table primary-table-bordered">
-                                    <thead class="thead-primary">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Primary Table</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table primary-table-bordered">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th scope="col">Application No.</th>
+                                        <th scope="col">Enrollment No.</th>
+                                        <th scope="col">Rejected By</th>
+                                        <th scope="col">Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $status = "rejected";
+                                    $cmd = $con->prepare("SELECT * FROM `tbl_stu_application` WHERE app_status= ?");
+                                    $cmd->bind_param("s", $status);
+                                    $cmd->execute();
+                                    $result2 = $cmd->get_result();
+                                    while ($row = $result2->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                            <th scope="col">Application No.</th>
-                                            <th scope="col">Enrollment No.</th>
-                                            <th scope="col">Rejected By</th>
-                                            <th scope="col">Reason</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>1</th>
+                                            <th><?php echo $row['application_id']; ?></th>
                                             <th>
-                                                201290116025
+                                            <?php echo $row['enrollment_number']; ?>
                                             </th>
-                                            <td>S.S.</td>
-                                            <td>Man thyu etle</td>
+                                            <td>
+                                                <?php 
+                                                if(!empty($row['current_clg_reject_reason'])){
+                                                    echo "current college";
+                                                } else if(!empty($row['transferred_clg_reject_reason'])){
+                                                    echo "transferred college Rejected";
+                                                } else if(!empty($row['cte_reject_reason'])){
+                                                    echo "CTE Rejected";
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                            <?php 
+                                                if(!empty($row['current_clg_reject_reason'])){
+                                                    echo $row['current_clg_reject_reason'];
+                                                } else if(!empty($row['transferred_clg_reject_reason'])){
+                                                    echo $row['transferred_clg_reject_reason'];
+                                                } else if(!empty($row['cte_reject_reason'])){
+                                                    echo $row['cte_reject_reason'];
+                                                }
+                                                ?>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th>
-                                                201290116020
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>Document nathi eni pase badha</td>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th>
-                                                201290116033
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>Ene 10 SPI che ee amare tya j rese</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
                 <!-- </div> -->
             </div>
         </div>

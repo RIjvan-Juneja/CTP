@@ -5,7 +5,7 @@ if (isset($_SESSION['enrollment_number'])) {
     $enrollment_number = $_SESSION['enrollment_number'];
 } else {
     // header("Location: login.php");
-    exit();
+    // exit();
     // echo "Enrollment";
 }
 if (isset($_POST["b-submit"])) {
@@ -40,14 +40,15 @@ if (isset($_POST["b-submit"])) {
     <?php include '../college/include/importhead.php'; ?>
     <link rel="stylesheet" href="../assets/student_assets/application.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/navcss.css">
     <title>Document</title>
 </head>
 
 <body>
     <div class="container for-nav">
-        <?php include("../common/importheader.php") ?>
+        <?php include("./common/importheader.php") ?>
     </div>
-    <?php include("../common/importheader2.php") ?>
+    <?php include("./common/importheader2.php") ?>
     <div class="card container-fluid">
         <div class="card-header">
             <h4 class="card-title application-heading">Transfer Application</h4>
