@@ -65,38 +65,21 @@ $result = mysqli_query($con,$query);
                                                 ?>
                                                 <td><?php echo $row['application_id']; ?></td>
                                                 <!-- <td><?php echo implode(' ', array($row['first_name'], $row['middle_name'])); ?></td> -->
-                                                <td><?php echo $row['enrollment_number'];?></td>
+                                                <td><a href="../student/stu_application_view.php?id=<?php echo $row['enrollment_number']?>"><?php echo $row['enrollment_number'];?></a></td>
                                                 <td><?php echo $row['current_clg_id'];  ?></td>
                                                 <td><?php echo $row['transferred_clg_id'];  ?></td>
-                                                <td><a href="f_approve.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-primary text-white">
-                                                <i class="tf-icons bx bx-check fs-5"></i>
+                                                <td><a href="f_approve.php?id=<?php echo $row['enrollment_number'];?>" class="btn btn-icon btn-primary text-white">
+                                                Approve
                                                     </a>
-                                                    <a href="f_reject.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-secondary text-white">
-                                                        <i class='tf-icons bx bx-x fs-5'></i>
+                                                    <a href="f_reject.php?id=<?php echo $row['enrollment_number'];?>" class="btn btn-icon btn-secondary text-white">
+                                                        reject
                                                     </a></td>
                                             
                                             <?php
                                                 }
                                           ?>
                                         </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th>
-                                                <a href="#">201290116020</a>
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>GMIU</td>
-                                            <td><span class="badge badge-success">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th>
-                                                <a href="#">201290116033</a>
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>S.S.</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                        </tr>
+                                
                                     </tbody>
                                 </table>
                             </div>
