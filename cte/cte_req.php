@@ -10,7 +10,6 @@
     $query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
     $result = mysqli_query($con, $query);
 
-
     ?>
 </head>
 

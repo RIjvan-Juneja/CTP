@@ -1,9 +1,28 @@
-<?php 
+<?php
 
 include "../Database/connect.php";
 
 $er_num = $_GET['id'];
 
+if(isset($_POST['submit'])){
+    
+$reason = $_POST['reason'];
+
+
+
+$stmt = $con->prepare("UPDATE `tbl_stu_application` SET `cte_reject_reason` = ? WHERE enrollment_number` = ?");
+$stmt->bind_param("s",$er_num);
+$result = $stmt->execute();
+if ($result) {
+    echo "<script>alert('Succusffuly')</script>";
+    header("location:cte_req.php");
+    // header('location:../application.php');
+} else {
+    echo "<script>alert('failed')</script>";
+    header("location:cte_req.php");
+}
+
+}
 // $stmt = $con->prepare("UPDATE `tbl_stu_application` SET `cte_approved` = '1', `app_status` = 'approved' WHERE `enrollment_number`= ?;");
 // $stmt->bind_param("s",$er_num);
 // $result = $stmt->execute();
@@ -57,24 +76,23 @@ $er_num = $_GET['id'];
                                         Write Your code here 
                 ******************************************************************-->
                 <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Reject Reason</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="basic-form">
-                                    <form action="f_reject.php">
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="4" id="comment" name="reason"></textarea></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                                    </form>
+                    <div class="card-header">
+                        <h4 class="card-title">Reject Reason</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form action="f_reject.php">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="4" id="comment" name="reason"></textarea></textarea>
                                 </div>
-                            </div>
+                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                            </form>
                         </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--Content body end-->
-
 
         <!--Footer start-->
         <?php include './include/footer.php'; ?>
