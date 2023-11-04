@@ -4,6 +4,13 @@
 <head>
     <?php include './include/importhead.php'; ?>
     <title>CTE PORTAL</title>
+    <?php
+include('../Database/connect.php');
+$query = "SELECT * FROM tbl_stu_application WHERE app_status = 'approved'";
+$result = mysqli_query($con,$query);
+
+
+?>
 </head>
 
 <body>
@@ -50,12 +57,19 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th>1</th>
-                                            <th>
-                                                201290116025
-                                            </th>
-                                            <td>S.S.</td>
-                                            <td>GMIT</td>
+                                        <?php
+                                                while($row = mysqli_fetch_assoc($result))
+                                                {
+                                                ?>
+                                                <td><?php echo $row['application_id']; ?></td>
+                                                <td><?php echo $row['enrollment_number'];?></td>
+                                                <td><?php echo $row['current_clg_id'];  ?></td>
+                                                <td><?php echo $row['transferred_clg_id'];  ?></td>
+
+                                            
+                                            <?php
+                                                }
+                                          ?>
                                         </tr>
                                         <tr>
                                             <th>2</th>
