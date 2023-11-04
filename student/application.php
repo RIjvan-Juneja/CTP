@@ -5,7 +5,7 @@ if (isset($_SESSION['enrollment_number'])) {
     $enrollment_number = $_SESSION['enrollment_number'];
 } else {
     // header("Location: login.php");
-    exit();
+    // exit();
     // echo "Enrollment";
 }
 if (isset($_POST["b-submit"])) {
