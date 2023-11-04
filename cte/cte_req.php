@@ -4,6 +4,12 @@
 <head>
     <?php include './include/importhead.php'; ?>
     <title>CTE PORTAL</title>
+    
+<?php
+include('../Database/connect.php');
+$query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
+$result = mysqli_query($con,$query);
+?>
 </head>
 
 <body>
@@ -42,7 +48,7 @@
                                 <table class="table primary-table-bordered">
                                     <thead class="thead-primary">
                                         <tr>
-                                            <th scope="col">Application No.</th>
+                                            <th scope="col">Application ID.</th>
                                             <th scope="col">Enrollment No.</th>
                                             <th scope="col">Current College</th>
                                             <th scope="col">Transfer College</th>
@@ -51,13 +57,19 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th>1</th>
-                                            <th>
-                                                <a href="#">201290116025</a>
-                                            </th>
-                                            <td>S.S.</td>
-                                            <td>GMIT</td>
+                                        <?php
+                                                while($row = mysqli_fetch_assoc($result))
+                                                {
+                                                ?>
+                                                <td><?php echo $row['application_id']; ?></td>
+                                                <!-- <td><?php echo implode(' ', array($row['first_name'], $row['middle_name'])); ?></td> -->
+                                                <td><?php echo $row['enrollment_number'];?></td>
+                                                <td><?php echo $row['current_clg_id'];  ?></td>
+                                                <td><?php echo $row['transferred_clg_id'];  ?></td>
                                             <td><span class="badge badge-warning">Pending</span></td>
+                                            <?php
+                                                }
+                                          ?>
                                         </tr>
                                         <tr>
                                             <th>2</th>
