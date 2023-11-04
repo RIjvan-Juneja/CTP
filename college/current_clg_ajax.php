@@ -76,7 +76,7 @@ exit(); */
                         ];
                     }
                 } else {
-                   if ($name == "Aadhar_card") {
+                   if ($name == "current_clg_noc") {
                         $update = $con->prepare(
                             "UPDATE tbl_application_documents SET current_clg_noc = ? WHERE student_id = ?"
                         );
