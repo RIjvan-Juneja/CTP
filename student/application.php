@@ -98,7 +98,7 @@ if (isset($_POST["b-submit"])) {
                                         <div class="form-group">
                                             <label class="text-label">Last Name*</label>
                                             <input type="text" name="last_name" class="form-control error"
-                                                placeholder="Surename" required=""><label id="lastName-error"
+                                                placeholder="Surname" required=""><label id="lastName-error"
                                                 class="error" for="lastName">Validation</label>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ if (isset($_POST["b-submit"])) {
                             </form>
                             </div>
                         </div>
-                    <!-- BASIC DETAIL SECTION END  -->
+                    <!-- BASIC DETAIL SECTION END  hello-->
 
                     <div class="tab-pane fade" id="academic">
                         <form action="application.php" method="POST">
