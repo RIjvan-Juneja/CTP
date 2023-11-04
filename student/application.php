@@ -167,7 +167,7 @@ if (isset($_POST["b-submit"])) {
                             </form>
                             </div>
                         </div>
-                    <!-- BASIC DETAIL SECTION END  hello-->
+                    <!-- BASIC DETAIL SECTION END-->
 
                     <div class="tab-pane fade" id="academic">
                         <form action="application.php" method="POST">
