@@ -5,7 +5,7 @@ if (isset($_SESSION['enrollment_number'])) {
     $enrollment_number = $_SESSION['enrollment_number'];
 } else {
     // header("Location: login.php");
-    exit();
+    // exit();
     // echo "Enrollment";
 }
 if (isset($_POST["b-submit"])) {
@@ -40,14 +40,15 @@ if (isset($_POST["b-submit"])) {
     <?php include '../college/include/importhead.php'; ?>
     <link rel="stylesheet" href="../assets/student_assets/application.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/navcss.css">
     <title>Document</title>
 </head>
 
 <body>
     <div class="container for-nav">
-        <?php include("../common/importheader.php") ?>
+        <?php include("./common/importheader.php") ?>
     </div>
-    <?php include("../common/importheader2.php") ?>
+    <?php include("./common/importheader2.php") ?>
     <div class="card container-fluid">
         <div class="card-header">
             <h4 class="card-title application-heading">Transfer Application</h4>
@@ -167,7 +168,7 @@ if (isset($_POST["b-submit"])) {
                             </form>
                             </div>
                         </div>
-                    <!-- BASIC DETAIL SECTION END  hello-->
+                    <!-- BASIC DETAIL SECTION END-->
 
                     <div class="tab-pane fade" id="academic">
                         <form action="application.php" method="POST">
@@ -198,7 +199,18 @@ if (isset($_POST["b-submit"])) {
                                                 for="current-college">validation</label>
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="text-label">College Transfer Reason*</label>
+                                            <select class="form-control" name="transferred_clg_id">
+                                                <option value="Medical">Medical Reason</option>
+                                                <option value="1">Parent's Demise</option>
+                                                <!-- <option value="1">SSIP</option> -->
+                                            </select>
+                                            <label id="current-college-error" class="error"
+                                                for="current-college">validation</label>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="text-label">Course*</label>

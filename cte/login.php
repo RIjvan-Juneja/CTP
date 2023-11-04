@@ -1,9 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<from>
 <head>
     <?php include './include/importhead.php'; ?>
     <title>CTE PORTAL</title>
+    <?php
+session_start();
+include "../Database/connect.php";
+
+
+
+// Check if the form is submitted
+if (isset($_POST['sign_in'])) {
+    // Get the form data
+    $email = $_POST['email_id'];
+    $d_role = $_POST['role'];
+    $password = $_POST['password'];
+
+    // Update the SQL query to include the `role` column in the `SELECT` statement
+    $query = "SELECT * FROM tbl_login WHERE email_id = ? AND password = ?";
+    $stmt = $con->prepare($query);
+
+    // Update the `bind_param()` method to bind the `role` variable to the SQL query
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if the user exists
+    if ($result->num_rows === 1) {
+        // User is authenticated
+        // Set the enrollment number in the session
+        $_SESSION['email_id'] = $email;
+
+        // Get the user's role
+        $row = $result->fetch_assoc();
+        $role = $row['user_type'];
+
+        // You can perform further actions like redirecting
+        // depending on the user's role
+        if ($role == "CTE") {
+            echo "<script>alert('login Succesfully')</script>";
+            header("Location: index.php");
+            
+        } else if ($role == "college") {
+            
+            echo "<script>alert('login Succesfully')</script>";
+            header("Location: ../college/index.php");
+        }
+        exit();
+    } else {
+        // Invalid credentials
+        echo "<script>alert('Invalid username or password')</script>";
+    }
+
+    // Close the prepared statement and database connection
+    $stmt->close();
+    $con->close();
+}
+?>
 </head>
 
 <body class="h-100" data-typography="poppins" data-theme-version="light" data-layout="vertical"
@@ -26,29 +80,28 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-                                    <h4 class="text-center mb-4">Sign in CTE account</h4>
-                                    <form action="index.html">
+                                    <h4 class="text-center mb-4">Department Login</h4>
+                                    <form action="login.php" method="post">
                                         <div class="form-group">
                                             <label><strong>Select Role</strong></label>
-                                            <select class="form-control" id="val-skill" name="val-skill">
+                                            <select class="form-control" id="val-skill" name="role">
                                                 <option value="">Please select</option>
-                                                <option value="asp">Admin</option>
-                                                <option value="python">Fees Control</option>
-                                                <option value="mysql">Reception</option>
+                                                <option value="asp">CTE</option>
+                                                <option value="python">College</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Username</strong></label>
                                             <input type="email" placeholder="email@cte.edu.in" class="form-control"
-                                                value="">
+                                                value="" name="email_id">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
                                             <input type="password" placeholder="Enter Your Password"
-                                                class="form-control" value="">
+                                                class="form-control" name="password">
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            <button type="submit" name="sign_in" class="btn btn-primary btn-block">Sign in</button>
                                         </div>
                                     </form>
                                 </div>
@@ -59,7 +112,7 @@
             </div>
         </div>
     </div>
-
+</from>
 
     <!--**********************************
         Scripts
