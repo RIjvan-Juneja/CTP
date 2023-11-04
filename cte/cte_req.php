@@ -4,14 +4,14 @@
 <head>
     <?php include './include/importhead.php'; ?>
     <title>CTE PORTAL</title>
-    
-<?php
-include('../Database/connect.php');
-$query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
-$result = mysqli_query($con,$query);
+
+    <?php
+    include('../Database/connect.php');
+    $query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
+    $result = mysqli_query($con, $query);
 
 
-?>
+    ?>
 </head>
 
 <body>
@@ -41,24 +41,24 @@ $result = mysqli_query($con,$query);
         <div class="content-body">
             <div class="container-fluid">
                 <!-- <div class="col-lg-12"> -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Primary Table</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table primary-table-bordered">
-                                    <thead class="thead-primary">
-                                        <tr>
-                                            <th scope="col">Application ID.</th>
-                                            <th scope="col">Enrollment No.</th>
-                                            <th scope="col">Current College</th>
-                                            <th scope="col">Transfer College</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Primary Table</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table primary-table-bordered">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th scope="col">Application ID.</th>
+                                        <th scope="col">Enrollment No.</th>
+                                        <th scope="col">Current College</th>
+                                        <th scope="col">Transfer College</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
                                         <?php
                                                 while($row = mysqli_fetch_assoc($result))
                                                 {
@@ -85,6 +85,7 @@ $result = mysqli_query($con,$query);
                             </div>
                         </div>
                     </div>
+                </div>
                 <!-- </div> -->
             </div>
         </div>
