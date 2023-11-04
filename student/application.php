@@ -74,9 +74,9 @@ if (isset($_POST["b-submit"])) {
                 </ul>
                 <div class="tab-content">
                     <!-- BASIC DETAIL SECTION START -->
-                    <form action="application.php" method="post">
-                        <div class="tab-pane fade active show" id="basic" role="tabpanel">
-                            <div class="pt-4">
+                    <div class="tab-pane fade active show" id="basic" role="tabpanel">
+                        <div class="pt-4">
+                                <form action="application.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
@@ -164,9 +164,9 @@ if (isset($_POST["b-submit"])) {
                                     <button type="submit" class="btn btn-primary" name="b-submit"
                                         style="font-size : 17px; margin-right :10px;">Save</button>
                                 </div>
+                            </form>
                             </div>
                         </div>
-                    </form>
                     <!-- BASIC DETAIL SECTION END  -->
 
                     <div class="tab-pane fade" id="academic">
