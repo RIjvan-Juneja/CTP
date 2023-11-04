@@ -45,8 +45,8 @@ if (isset($_SESSION['enrollment_number'])) {
                                 <input type="number" class="form-control" id="er_num">
                             </div>
                             <div class="form-check py-2">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Accept rules & regulation</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1" >Accept rules & regulation</label>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Apply</button>
