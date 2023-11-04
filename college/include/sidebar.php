@@ -22,6 +22,8 @@
             </li>
             <li><a href="college_rejected_out_app.php" aria-expanded="false"><i class="icon icon-app-store"></i><span
                         class=" nav-text">College Transfer Rejected Out Applications</span></a></li>
+            <li><a href="upload_noc.php" aria-expanded="false"><i class="icon icon-app-store"></i><span
+                        class=" nav-text">Upload NOC</span></a></li>
             </li>
         </ul>
     </div>

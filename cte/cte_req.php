@@ -4,14 +4,14 @@
 <head>
     <?php include './include/importhead.php'; ?>
     <title>CTE PORTAL</title>
-    
-<?php
-include('../Database/connect.php');
-$query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
-$result = mysqli_query($con,$query);
+
+    <?php
+    include('../Database/connect.php');
+    $query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
+    $result = mysqli_query($con, $query);
 
 
-?>
+    ?>
 </head>
 
 <body>
@@ -41,67 +41,89 @@ $result = mysqli_query($con,$query);
         <div class="content-body">
             <div class="container-fluid">
                 <!-- <div class="col-lg-12"> -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Primary Table</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table primary-table-bordered">
-                                    <thead class="thead-primary">
-                                        <tr>
-                                            <th scope="col">Application ID.</th>
-                                            <th scope="col">Enrollment No.</th>
-                                            <th scope="col">Current College</th>
-                                            <th scope="col">Transfer College</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Primary Table</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table primary-table-bordered">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th scope="col">Application ID.</th>
+                                        <th scope="col">Enrollment No.</th>
+                                        <th scope="col">Current College</th>
+                                        <th scope="col">Transfer College</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
                                         <?php
-                                                while($row = mysqli_fetch_assoc($result))
-                                                {
-                                                ?>
-                                                <td><?php echo $row['application_id']; ?></td>
-                                                <!-- <td><?php echo implode(' ', array($row['first_name'], $row['middle_name'])); ?></td> -->
-                                                <td><?php echo $row['enrollment_number'];?></td>
-                                                <td><?php echo $row['current_clg_id'];  ?></td>
-                                                <td><?php echo $row['transferred_clg_id'];  ?></td>
-                                                <td><a href="f_approve.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-primary text-white">
-                                                <i class="tf-icons bx bx-check fs-5"></i>
-                                                    </a>
-                                                    <a href="f_reject.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-secondary text-white">
-                                                        <i class='tf-icons bx bx-x fs-5'></i>
-                                                    </a></td>
-                                            
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                            <td>
+                                                <?php echo $row['application_id']; ?>
+                                            </td>
+                                            <!-- <td><?php echo implode(' ', array($row['first_name'], $row['middle_name'])); ?></td> -->
+                                            <td>
+                                                <?php echo $row['enrollment_number']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['current_clg_id']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['transferred_clg_id']; ?>
+                                            </td>
+                                            <td><a href="f_approve.php?id=<?php echo $row['id'] ?>"
+                                                    class="btn btn-rounded btn-success">
+                                                    <i class="tf-icons bx bx-check fs-5"></i>
+                                                </a>
+                                                <a href="f_reject.php?id=<?php echo $row['id'] ?>"
+                                                    class="btn btn-rounded btn-warning">
+                                                    <i class='tf-icons bx bx-x fs-5'></i>
+                                                </a>
+                                            </td>
+
                                             <?php
-                                                }
-                                          ?>
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th>
-                                                <a href="#">201290116020</a>
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>GMIU</td>
-                                            <td><span class="badge badge-success">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th>
-                                                <a href="#">201290116033</a>
-                                            </th>
-                                            <td>GMIT</td>
-                                            <td>S.S.</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        }
+                                        ?>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <th>
+                                            <a href="#">201290116020</a>
+                                        </th>
+                                        <td>GMIT</td>
+                                        <td>GMIU</td>
+                                        <td>
+                                            <a href="http://github.com">
+                                                <span class="btn btn-rounded btn-success">
+                                                    Approve
+                                                </span>
+                                            </a>
+
+                                            <a href="http://github.com/JptmJ">
+                                                <span class="btn btn-rounded btn-warning">
+                                                    Reject
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <th>
+                                            <a href="#">201290116033</a>
+                                        </th>
+                                        <td>GMIT</td>
+                                        <td>S.S.</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
                 <!-- </div> -->
             </div>
         </div>
