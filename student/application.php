@@ -19,7 +19,7 @@ if (isset($_POST["b-submit"])) {
     $u_gender = mysqli_real_escape_string($con, $_POST['gender']);
     $u_cast = mysqli_real_escape_string($con, $_POST['cast']);
     $u_dob = mysqli_real_escape_string($con, $_POST['dob']);
-    $u_stmt = $con->prepare("UPDATE `tbl_stu_application` SET first_name = ?,middle_name = ?,last_name = ?,email= ?,mobile_number= ?,dob=?,gender= ?,cast = ? WHERE enrollment_number = ? ");
+    $u_stmt = $con->prepare("UPDATE `tbl_stu_application` SET first_name = ?,middle_name = ?,last_name = ?,email_id= ?,mobile_number= ?,dob=?,gender= ?,cast = ? WHERE enrollment_number = ? ");
     $u_stmt->bind_param("sssssiss", $u_first_name, $u_middle_name, $u_last_name, $u_email, $u_mobile_number, $u_dob, $u_gender, $u_cast,$enrollment_number);
     $result = $stmt->execute();
     if ($result) {
@@ -156,8 +156,9 @@ if (isset($_POST["b-submit"])) {
                             </div>
                             <div class="row justify-content-end">
                                 <!-- <a class="btn btn-light form-btn" target="_blank" href="#">Previous</a> -->
-                                <a class="btn btn-primary form-btn" target="_blank" data-toggle="tab"
-                                    id="firstAnchor">Save</a>
+                                <!-- <a class="btn btn-primary form-btn" target="_blank" data-toggle="tab"
+                                    id="firstAnchor">Save</a> -->
+                                <button type="submit" class="btn btn-primary" name="b-submit" style="font-size : 17px; margin-right :10px;">Save</button>
                             </div>
                         </div>
                     </div>
