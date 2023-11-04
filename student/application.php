@@ -291,26 +291,10 @@ if (isset($_POST["b-submit"])) {
                     </div>
                     <div class="tab-pane fade" id="document">
                         <div class="pt-4">
-                            <h4>This is contact title</h4>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. Separated they live in Bookmarksgrove.
-                            </p>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. Separated they live in Bookmarksgrove.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="application-submit">
-                        <div class="pt-4">
-                            <h4>This is message title</h4>
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                aliqua, retro synth master cleanse. Mustache cliche tempor.
-                            </p>
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                aliqua, retro synth master cleanse. Mustache cliche tempor.
-                            </p>
-                        </div>
-                    </div>
+                        <h4 class="text-center">Upload Document</h4>
+                                <div class="row">
+                                    <?php include 'upload_document.php';  ?>
+                                </div>
                 </div>
             </div>
         </div>
