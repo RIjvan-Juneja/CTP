@@ -9,6 +9,8 @@
 include('../Database/connect.php');
 $query = "SELECT * FROM tbl_stu_application WHERE current_clg_approved = '1' AND transferred_clg_approved = '1' AND cte_approved = '0' AND app_status = 'pending'";
 $result = mysqli_query($con,$query);
+
+
 ?>
 </head>
 
@@ -66,7 +68,13 @@ $result = mysqli_query($con,$query);
                                                 <td><?php echo $row['enrollment_number'];?></td>
                                                 <td><?php echo $row['current_clg_id'];  ?></td>
                                                 <td><?php echo $row['transferred_clg_id'];  ?></td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
+                                                <td><a href="f_approve.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-primary text-white">
+                                                <i class="tf-icons bx bx-check fs-5"></i>
+                                                    </a>
+                                                    <a href="f_reject.php?id=<?php echo $row['id']?>" class="btn btn-icon btn-secondary text-white">
+                                                        <i class='tf-icons bx bx-x fs-5'></i>
+                                                    </a></td>
+                                            
                                             <?php
                                                 }
                                           ?>

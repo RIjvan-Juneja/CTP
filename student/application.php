@@ -73,6 +73,7 @@ if (isset($_POST["b-submit"])) {
                 </ul>
                 <div class="tab-content">
                     <!-- BASIC DETAIL SECTION START -->
+                    <form action="application.php" method="post">
                     <div class="tab-pane fade active show" id="basic" role="tabpanel">
                         <div class="pt-4">
                             <div class="row">
@@ -154,12 +155,13 @@ if (isset($_POST["b-submit"])) {
                                 </div>
                             </div>
                             <div class="row justify-content-end">
-                                <a class="btn btn-light form-btn" target="_blank" href="#">Previous</a>
+                                <!-- <a class="btn btn-light form-btn" target="_blank" href="#">Previous</a> -->
                                 <a class="btn btn-primary form-btn" target="_blank" data-toggle="tab"
-                                    id="firstAnchor">Save & Next</a>
+                                    id="firstAnchor">Save</a>
                             </div>
                         </div>
                     </div>
+                    </form>
                     <!-- BASIC DETAIL SECTION END  -->
 
                     <div class="tab-pane fade" id="academic">
