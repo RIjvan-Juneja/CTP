@@ -4,16 +4,16 @@
 <head>
     <?php include './include/importhead.php';
     include '../Database/connect.php';
-     ?>
-    
-    
+    ?>
+
+
     <title>CTE PORTAL</title>
-<?php
-     $stmtcmd = $con->prepare("SELECT * FROM tbl_stu_application");
+    <?php
+    $stmtcmd = $con->prepare("SELECT * FROM tbl_stu_application");
     $stmtcmd->execute();
     $result = $stmtcmd->get_result();
     $total_count = $result->num_rows;
-     
+
     $stmtcmd = $con->prepare("SELECT app_status FROM tbl_stu_application WHERE app_status='approved' ");
     $stmtcmd->execute();
     $result = $stmtcmd->get_result();
@@ -29,10 +29,11 @@
     $result = $stmtcmd->get_result();
     $pending = $result->num_rows;
 
-   
 
-?>
+
+    ?>
 </head>
+
 <body>
 
     <!-- Preloader start -->
@@ -66,7 +67,9 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Total Applications </div>
-                                    <div class="stat-digit"><?php echo"$total_count " ?></div>
+                                    <div class="stat-digit">
+                                        <?php echo "$total_count " ?>
+                                    </div>
                                 </div>
 
                             </div>
@@ -77,7 +80,9 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Transfer Approved Applications</div>
-                                    <div class="stat-digit"><?php echo"$approved " ?></div>
+                                    <div class="stat-digit">
+                                        <?php echo "$approved " ?>
+                                    </div>
                                 </div>
 
                             </div>
@@ -88,7 +93,9 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Transfer Reject</div>
-                                    <div class="stat-digit"><?php echo"$rejected " ?></div>
+                                    <div class="stat-digit">
+                                        <?php echo "$rejected " ?>
+                                    </div>
                                 </div>
 
                             </div>
@@ -99,7 +106,9 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">College Approval Pending</div>
-                                    <div class="stat-digit"><?php echo"$pending " ?></div>
+                                    <div class="stat-digit">
+                                        <?php echo "$pending " ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

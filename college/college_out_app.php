@@ -46,7 +46,7 @@
                                         <th scope="col">Enrollment No.</th>
                                         <th scope="col">Current College</th>
                                         <th scope="col">Transfer College</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
