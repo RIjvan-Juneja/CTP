@@ -2,7 +2,7 @@
 if (isset($_SESSION['enrollment_number'])) {
     $enrollment_number = $_SESSION['enrollment_number'];
 }else{
-    header("Location: application.php");
+    // header("Location: application.php");
 }
 ?>
 
