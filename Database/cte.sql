@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2023 at 07:58 AM
+-- Generation Time: Nov 06, 2023 at 09:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -79,6 +79,14 @@ CREATE TABLE `tbl_login` (
   `is_delete` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_login`
+--
+
+INSERT INTO `tbl_login` (`id`, `email_id`, `password`, `user_type`, `organization_type`, `college_id`, `is_active`, `is_delete`) VALUES
+(1, 'abc@gmail.com', '123', 'CTE', '', '', 0, 0),
+(2, 'xyz@gmail.com', '123', 'college', '', '777', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -115,7 +123,7 @@ INSERT INTO `tbl_students` (`id`, `enrollment_number`, `first_name`, `middle_nam
 (1, '201290116020', 'Rijvan', 'Riyajbhai', 'Juneja', '9586404030', 'avb9924@gmail.com', '123', '2023-11-15', 'male', 2020, 'ISLAM', 'OBC', 'GMIU', 'B.E', 'IT', 5, 1, 0),
 (2, '2012', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
 (3, '12', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
-(4, '123456789', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
+(4, '123456789', '', '', '', '', '', '123', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
 (5, '999999999', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
 (6, '9999999998', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
 (7, '11111111111111', '', '', '', '', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, 0, 0),
@@ -137,15 +145,25 @@ CREATE TABLE `tbl_stu_application` (
   `id` int(50) NOT NULL,
   `application_id` varchar(200) NOT NULL,
   `enrollment_number` varchar(255) NOT NULL,
-  `mobile_number_1` varchar(200) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `dob` int(8) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `cast` varchar(100) NOT NULL,
+  `mobile_number` varchar(200) NOT NULL,
   `mobile_number_2` varchar(200) NOT NULL,
   `email_id` varchar(255) NOT NULL,
   `current_clg_id` varchar(255) NOT NULL,
+  `branch` varchar(100) NOT NULL,
+  `course` varchar(100) NOT NULL,
   `transferred_clg_id` varchar(255) NOT NULL,
+  `clg_transfer_reason` varchar(500) NOT NULL,
   `transfereed_in_sem` int(2) NOT NULL,
   `current_backlog` int(2) NOT NULL,
   `current_kt` int(2) NOT NULL,
   `previous_sem_spi` int(2) NOT NULL,
+  `current_sem` int(8) NOT NULL,
   `cpi_till_now` int(2) NOT NULL,
   `stu_has_ufm` int(1) NOT NULL COMMENT '(0,1)',
   `stu_detained` int(1) NOT NULL COMMENT '(0,1)',
@@ -164,6 +182,17 @@ CREATE TABLE `tbl_stu_application` (
   `is_active` int(1) NOT NULL,
   `is_delete` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_stu_application`
+--
+
+INSERT INTO `tbl_stu_application` (`id`, `application_id`, `enrollment_number`, `first_name`, `middle_name`, `last_name`, `dob`, `gender`, `cast`, `mobile_number`, `mobile_number_2`, `email_id`, `current_clg_id`, `branch`, `course`, `transferred_clg_id`, `clg_transfer_reason`, `transfereed_in_sem`, `current_backlog`, `current_kt`, `previous_sem_spi`, `current_sem`, `cpi_till_now`, `stu_has_ufm`, `stu_detained`, `admission_category`, `all_terms_and_condition`, `current_clg_approved`, `current_clg_time_stamp`, `transferred_clg_approved`, `transferred_clg_time_stamp`, `cte_approved`, `cte_time_stamp`, `current_clg_reject_reason`, `transferred_clg_reject_reason`, `cte_reject_reason`, `app_status`, `is_active`, `is_delete`) VALUES
+(2, '116016KJX2023', '201290116016', '', '', '', 0, '', '', '', '', '', 'GMIU', '', '', 'SSGEC', '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, '2023-11-03', 1, '2023-11-03', 0, '2023-11-03', '', '', '', 'pending', 0, 0),
+(4, '116026ITX2023', '201290116026', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '2023-11-03', 0, '2023-11-03', 0, '2023-11-03', '', '', '', 'pending', 0, 0),
+(5, 'fjhjdfsjkhfjk', 'fkdkfksdjfksd', 'gkdjfgijs', 'hfjdhjkf', 'fjghdjfgjk', 0, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '2023-11-04', 0, '2023-11-04', 1, '2023-11-04', '', '', 'h\r\n', 'approved', 0, 0),
+(6, '116020FJM2023', '201290116020', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '2023-11-04', 0, '2023-11-04', 0, '2023-11-04', '', '', '', '', 0, 0),
+(7, '456789RYR2023', '123456789', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '2023-11-04', 0, '2023-11-04', 0, '2023-11-04', '', '', '', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -219,7 +248,7 @@ ALTER TABLE `tbl_college_details`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_students`
@@ -231,7 +260,7 @@ ALTER TABLE `tbl_students`
 -- AUTO_INCREMENT for table `tbl_stu_application`
 --
 ALTER TABLE `tbl_stu_application`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
